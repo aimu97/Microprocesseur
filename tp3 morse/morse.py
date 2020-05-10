@@ -34,7 +34,8 @@ while (1):
         flt = float(string)
     except:
         flt = 0.0
-   #print(flt)
+    #print("ufg")
+    #print(flt)
     if flt == 1:
         timein = time.time()
         while flt == 1.0:
@@ -64,29 +65,34 @@ while (1):
                 flt = 0.0
         timeout = time.time()
         dif = timeout - timein
+        #print(dif)
         if 2 < dif < 10:
+           # print(dif+"-")
             data.append(3)
             print(data)
 
         if dif > 10:
+            #print(dif+"+")
             result = ""
             tmp = ""
+            addToResult = ""
             for i in data:
-                if i == 3:
-                        #addToResult = list(MORSE_CODE_DICT.keys())[list(MORSE_CODE_DICT.values()).index(tmp)]
-                    addToResult = addToResult+ MORSE_CODE_DICT.get(data)
+             if i == 3:
+                 if tmp in MORSE_CODE_DICT.values():
+                     list = [k for (k, val) in MORSE_CODE_DICT.items() if val == 2]
+                     for k in list:
+                        addToResult = addToResult + str(k)
+                     result = result + addToResult
+                 addToResult = ""
+                 tmp = ""
+             else:
+               tmp += str(i)
+             print(result)
 
 
-                    result += addToResult
-                    tmp = ""
-                else:
-                    tmp += str(i)
-            print(result)
 
-
-
-           # for i in data:
-            #    ser.write([i])
-             #   time.sleep(0.5)
+       #  for i in data:
+        #    ser.write([i])
+         #   time.sleep(0.5)
 
 ser.close()
