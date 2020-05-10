@@ -79,7 +79,7 @@ while (1):
             for i in data:
              if i == 3:
                  if tmp in MORSE_CODE_DICT.values():
-                     list = [k for (k, val) in MORSE_CODE_DICT.items() if val == 2]
+                     list = [k for (k, val) in MORSE_CODE_DICT.items() if val == tmp]
                      for k in list:
                         addToResult = addToResult + str(k)
                      result = result + addToResult
@@ -87,7 +87,7 @@ while (1):
                  tmp = ""
              else:
                tmp += str(i)
-             print(result)
+            print(result)
 
 
 
